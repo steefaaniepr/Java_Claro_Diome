@@ -1,4 +1,4 @@
-VERIFICAÇÃO DE SERVICO 
+1- VERIFICAÇÃO DE SERVICO 
 
 Descrição
 Uma concessionária de telecomunicações oferece quatro tipos de serviços: telefonia móvel, telefonia fixa, banda larga e TV por assinatura. Para facilitar o atendimento ao cliente, é necessário implementar um programa que verifique se um cliente específico contratou um determinado serviço. Por exemplo, quando um cliente liga para a central de atendimento e menciona um serviço, o atendente deve ser capaz de rapidamente verificar se esse serviço está contratado pelo cliente.
@@ -22,7 +22,7 @@ Bob,movel,tv	     Nao
 tv
 Carol,movel,fixa,tv	 Sim
 
-COMBO DE SERVIÇO DE TELEFONIA
+2- COMBO DE SERVIÇO DE TELEFONIA
 
 Descrição
 Implemente um sistema que verifique se um cliente de uma empresa de telecomunicações contratou um combo completo de serviços. Um combo completo inclui os três serviços principais oferecidos pela empresa: telefonia móvel, banda larga e TV por assinatura. O sistema deve ler uma lista de serviços contratados pelo cliente e determinar se todos os serviços necessários estão incluídos. Caso todos os três serviços estejam presentes, o sistema deve retornar "Combo Completo". Se faltar qualquer um dos serviços, o sistema deve retornar "Combo Incompleto".
