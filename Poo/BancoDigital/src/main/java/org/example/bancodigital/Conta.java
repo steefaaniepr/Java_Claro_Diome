@@ -1,43 +1,46 @@
 package org.example.bancodigital;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDateTime;
+
+
+@Data
+@NoArgsConstructor
 public abstract class Conta {
-        private final String numero;
-        private double saldo;
+    private String numero;
+    private double saldo;
+    private List<Transacao> historicoTransacoes = new ArrayList<>();
 
-        public Conta(String numero, double saldoInicial) {
-            this.numero = numero;
-            this.saldo = saldoInicial;
+    public Conta(String numero, double saldoInicial) {
+        this.numero = numero;
+        this.saldo = saldoInicial;
+    }
+
+    public void depositar(double valor) {
+        if (valor > 0) {
+            saldo += valor;
+            historicoTransacoes.add(new Transacao(LocalDateTime.now(), TipoTransacao.DEPOSITO, valor, "Depósito realizado"));
         }
+    }
 
-        public String getNumero() {
-            return numero;
+    public boolean sacar(double valor) {
+        if (valor > 0 && valor <= saldo) {
+            saldo -= valor;
+            historicoTransacoes.add(new Transacao(LocalDateTime.now(), TipoTransacao.SAQUE, valor, "Saque realizado"));
+            return true;
         }
+        return false;
+    }
 
-        public double getSaldo() {
-            return saldo;
+    public void exibirHistorico() {
+        System.out.println("Histórico de transações para a conta " + numero);
+        for (Transacao transacao : historicoTransacoes) {
+            System.out.println(transacao);
         }
+    }
 
-        public void depositar(double valor) {
-            if (valor > 0) {
-                saldo += valor;
-                System.out.println("Depósito realizado com sucesso.");
-            } else {
-                System.out.println("Valor inválido para depósito.");
-            }
-        }
-
-        public boolean sacar(double valor) {
-            if (valor > 0 && valor <= saldo) {
-                saldo -= valor;
-                System.out.println("Saque realizado com sucesso.");
-                return true;
-            } else {
-                System.out.println("Valor inválido ou saldo insuficiente.");
-                return false;
-            }
-        }
-
-        public abstract void exibirDetalhes();
-
-
+    public abstract void exibirDetalhes();
 }
